@@ -30,6 +30,12 @@ Next, set up the database:
 python manage.py migrate
 ```
 
+Authentication is required to the the API, so now add a user to the database, any permissions will do:
+
+```
+python manage.py createsuperuser --email you@domain.com --username admin
+```
+
 Finally, run the application using the development server:
 
 ```
@@ -50,6 +56,16 @@ Quit the server with CTRL-BREAK.
 
 The application will now be available at the address shown in the output.
 
+## Interacting with the API
+
+You can use the cURL CLI tool to interact with the API like so:
+
+```
+curl -X POST http://user:password@localhost:8000/person/ -H 'Content-Type: application/json' -d '{"first_name": "Turanga", "last_name": "Leela", "age": 25, "favourite_colour": "purple" }'
+
+curl -X GET http://user:password@localhost:8000/person/1/
+```
+
 ## Tests
 
 Run the included tests like so:
@@ -58,4 +74,7 @@ Run the included tests like so:
 python manage.py test 
 ```
 
-The tests cover ...
+The tests cover the model, and also the main operations of the API.
+
+## Limitations
+
