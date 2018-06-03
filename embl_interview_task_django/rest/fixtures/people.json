@@ -1,0 +1,4 @@
+[
+  {"model": "rest.person", "pk": 1, "fields": {"first_name": "Turanga", "last_name": "Leela", "age": 25, "favourite_colour": "Purple"}},
+  {"model": "rest.person", "pk": 2, "fields": {"first_name": "Philip", "last_name": "Fry", "age": 25, "favourite_colour": "Red"}}
+]
