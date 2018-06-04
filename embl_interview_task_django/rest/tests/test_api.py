@@ -43,6 +43,20 @@ class PersonApiTest(APITestCase):
         self.assertEqual(response.data['first_name'], 'Turanga')
         self.assertEqual(response.data['last_name'], 'Leela')
 
+    def test_update(self):
+        data = {
+            'first_name': 'Turanga',
+            'last_name': 'Leela',
+            'age': 25,
+            'favourite_colour': "Green"
+        }
+
+        self.client.force_authenticate(user=User.objects.get(username='admin'))
+        response = self.client.put('/person/1/', data, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Person.objects.get(first_name='Turanga').favourite_colour, 'Green')
+
     def test_list(self):
         self.client.force_authenticate(user=User.objects.get(username='admin'))
         response = self.client.get('/person/')
