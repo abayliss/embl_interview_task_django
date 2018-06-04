@@ -66,6 +66,8 @@ curl -X POST http://user:password@localhost:8000/person/ -H 'Content-Type: appli
 curl -X GET http://user:password@localhost:8000/person/1/
 ```
 
+You can also interact with the API using the web interface provided by the Django REST Framework by going to http://localhost:8000/person/ in a browser.
+
 ## Tests
 
 Run the included tests like so:
@@ -78,3 +80,10 @@ The tests cover the model, and also the main operations of the API.
 
 ## Limitations
 
+The database schema ideally would have indexes on at least the name fields.
+
+Currently, any authenticated user can fully interact with the API. For a real world applicaton some privilege model should be implemented to allow different users to have different permissions on the API. For example, users could be allowed only read-only access.
+
+I have not explored the security implications of the web interface provided by Django REST Framework, it could be that this should be disabled in a production environment.
+
+I have only included settings suitable for running a development version of the application, no production configuration is provided.
